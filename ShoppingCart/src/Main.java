@@ -31,17 +31,30 @@ public class Main {
         double totaProfit = profitPerProduct * productQuantity;
         System.out.println("Total Profit: " + totaProfit);
         //  Enum shipping
-        OrderStatus status = OrderStatus.PENDING;
-        ShippingStatus Shipping = ShippingStatus.STANDARD;
+        OrderStatus status = OrderStatus.PROCESSING;
+        ShippingStatus Shipping = ShippingStatus.TWO_DAY;
         OrderStatus[] numStatus = OrderStatus.values();
         OrderStatus pending = numStatus[0];
         ShippingStatus[] numShipping = ShippingStatus.values();
         ShippingStatus standard = numShipping[0];
 
-        System.out.println(pending);
-        System.out.println(standard);
-        System.out.println("Thank you for your purchased! Your order is currently: " + status);
-        System.out.println("You choose: " + Shipping + " shipping.");
+        System.out.println(ShippingStatus.STANDARD);
+        System.out.println(ShippingStatus.TWO_DAY);
+        System.out.println(ShippingStatus.OVERNIGHT);
+        OrderStatus orderStatus = OrderStatus.PROCESSING;
+        System.out.println("Order Status: " + orderStatus);
+
+        System.out.println(OrderStatus.PENDING);
+        System.out.println(OrderStatus.PROCESSING);
+        System.out.println(OrderStatus.SHIPPED);
+        System.out.println(OrderStatus.DELIVERED);
+        ShippingStatus shipStatus = ShippingStatus.TWO_DAY;
+        System.out.println("Shipping: " + shipStatus);
+
+       // System.out.println(pending);
+        // System.out.println(standard);
+        //System.out.println("Thank you for your purchased! Your order is currently: " + status);
+        //System.out.println("You choose: " + Shipping + " shipping.");
 
     }
 }
