@@ -1,4 +1,18 @@
 public class Main {
+    enum OrderStatus {
+        PENDING,
+        PROCESSING,
+        SHIPPED,
+        DELIVERED,
+    }
+
+    enum ShippingStatus {
+        STANDARD,
+        TWO_DAY,
+        OVERNIGHT
+    }
+
+
     public static void main(String[] args) {
         System.out.println("Welcome to the shopping cart app!");
         int productId = 1;
@@ -6,16 +20,28 @@ public class Main {
         double productCost = 2.56;
         double productPrice = 4.99;
         int productQuantity = 78;
-            // total cost of product based on inventory
-        double  totalCost = productCost * productQuantity;
+        // total cost of product based on inventory
+        double totalCost = productCost * productQuantity;
         System.out.println("Total Cost: " + totalCost);
-            // profit in dollars
+        // profit in dollars
         double profitPerProduct = productPrice - productCost;
         System.out.println("Profit in dollars: " + profitPerProduct);
 
-            //total potential profit
+        //total potential profit
         double totaProfit = profitPerProduct * productQuantity;
         System.out.println("Total Profit: " + totaProfit);
+        //  Enum shipping
+        OrderStatus status = OrderStatus.PENDING;
+        ShippingStatus Shipping = ShippingStatus.STANDARD;
+        OrderStatus[] numStatus = OrderStatus.values();
+        OrderStatus pending = numStatus[0];
+        ShippingStatus[] numShipping = ShippingStatus.values();
+        ShippingStatus standard = numShipping[0];
+
+        System.out.println(pending);
+        System.out.println(standard);
+        System.out.println("Thank you for your purchased! Your order is currently: " + status);
+        System.out.println("You choose: " + Shipping + " shipping.");
 
     }
 }
