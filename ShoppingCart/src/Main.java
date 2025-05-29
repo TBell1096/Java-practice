@@ -15,6 +15,13 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("Welcome to the shopping cart app!");
+        String businessName = "Zebra Goods";
+        String contactInformation = "512-555-5555";
+        String itemDescription = "My product description";
+
+        System.out.println("Business name: " + businessName);
+        System.out.println("Business contact info: " + contactInformation);
+        System.out.println("Product description: " + itemDescription);
         int productId = 1;
         int productCategory = 2;
         double productCost = 2.56;
