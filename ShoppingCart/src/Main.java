@@ -1,3 +1,4 @@
+import java.util.Scanner;
 public class Main {
     enum OrderStatus {
         PENDING,
@@ -14,7 +15,28 @@ public class Main {
 
 
     public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
+
         System.out.println("Welcome to the shopping cart app!");
+
+        System.out.print("Are you tax-exempt? (y/n)");
+        String taxExempt = console.nextLine();
+
+        System.out.print("Shipping? (y/n)");
+        String ship = console.nextLine();
+
+        System.out.print("Order quantity?");
+        String quantity = console.nextLine();
+
+        System.out.print("Promo code for free shipping?");
+        String promo = console.nextLine();
+
+        System.out.println("Details:");
+        System.out.println("Tax-exempt: " + taxExempt);
+        System.out.println("Shipping: " + ship);
+        System.out.println("Order quantity: " + quantity);
+        System.out.println("Promo code: " + promo);
+
         String businessName = "Zebra Goods";
         String contactInformation = "512-555-5555";
         String itemDescription = "My product description";
