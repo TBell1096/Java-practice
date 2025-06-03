@@ -18,11 +18,18 @@ public class Main {
         Scanner console = new Scanner(System.in);
 
         System.out.println("Welcome to the shopping cart app!");
+        int productId = 1;
+        int productCategory = 2;
+        double productCost = 2.56;
+        double productPrice = 4.99;
+        int productQuantity = 78;
+
+        System.out.println("Product price: " + productPrice);
 
         System.out.print("Are you tax-exempt? (y/n)");
         String taxExempt = console.nextLine();
 
-        System.out.print("Shipping? (y/n)");
+        System.out.print("Shipping? (Standard/ overnight/ two-day) ");
         String ship = console.nextLine();
 
         System.out.print("Order quantity?");
@@ -44,11 +51,15 @@ public class Main {
         System.out.println("Business name: " + businessName);
         System.out.println("Business contact info: " + contactInformation);
         System.out.println("Product description: " + itemDescription);
-        int productId = 1;
-        int productCategory = 2;
-        double productCost = 2.56;
-        double productPrice = 4.99;
-        int productQuantity = 78;
+
+
+        double taxRate = 0.07; // In percentage
+        double standardShipping = 2.00;
+        double twoDayShipping = 5.00;
+        double overnightShipping = 10.00;
+
+        double hundredDollarDiscount = 0.05;
+        double fiveHundredDollarDiscount = 0.10;
         // total cost of product based on inventory
         double totalCost = productCost * productQuantity;
         System.out.println("Total Cost: " + totalCost);
@@ -59,6 +70,48 @@ public class Main {
         //total potential profit
         double totaProfit = profitPerProduct * productQuantity;
         System.out.println("Total Profit: " + totaProfit);
+
+        //tax cost applied
+        if (taxExempt.equals("n")) {
+            totalCost = totalCost + (totalCost * totalCost);
+        }
+        System.out.println("Total w/ tax: " + totalCost);
+
+        //order total discount
+        if (totalCost >= 500) {
+            totalCost = totalCost - (totalCost * fiveHundredDollarDiscount);
+        } else if (totalCost >=  100) {
+            totalCost = totalCost - (totalCost * hundredDollarDiscount);
+        }
+        System.out.println("Total after discount: " + totalCost);
+
+        double shippingCost = 0.00;
+        switch (ship) {
+            case "standard":
+                shippingCost = standardShipping;
+                if (promo.equals("FREE")) {
+                    shippingCost = 0;
+                }
+                break;
+
+            case "overnight":
+                shippingCost = overnightShipping;
+                break;
+
+            case "twoday":
+                shippingCost = twoDayShipping;
+                break;
+
+            default:
+                // invalid input
+                System.out.println("Invalid shipping type");
+
+        }
+        totalCost += shippingCost;
+        System.out.println("Shipping Cost: " + shippingCost);
+        System.out.println("Final Total: " + totalCost);
+
+
         //  Enum shipping
         OrderStatus status = OrderStatus.PROCESSING;
         ShippingStatus Shipping = ShippingStatus.TWO_DAY;
@@ -80,10 +133,6 @@ public class Main {
         ShippingStatus shipStatus = ShippingStatus.TWO_DAY;
         System.out.println("Shipping: " + shipStatus);
 
-       // System.out.println(pending);
-        // System.out.println(standard);
-        //System.out.println("Thank you for your purchased! Your order is currently: " + status);
-        //System.out.println("You choose: " + Shipping + " shipping.");
 
     }
 }
