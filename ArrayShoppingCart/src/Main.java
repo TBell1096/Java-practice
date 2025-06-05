@@ -1,31 +1,45 @@
 import java.util.Scanner;
 public class Main {
+
+    private static void displayChoices(String[] choices) {
+        for (int i = 0; i <choices.length; i++) {
+            System.out.println((i + 1) + ". " + choices[i]);
+        }
+    }
+
+    private static String promptUserForString(String prompt) {
+        java.util.Scanner console = new Scanner(System.in);
+        System.out.println(prompt);
+        return console.nextLine();
+    }
+
+    private static int promptUserForInt(String prompt) {
+        java.util.Scanner console = new Scanner(System.in);
+        System.out.println(prompt);
+        return Integer.parseInt(console.nextLine());
+    }
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String[] addresses = {"123 Main St", "456 Main St", "789 Main St"};
         String[] size = {"small", "medium", "large"};
         int addressIndex = 0;
         int sizeIndex = 0;
-        for (int i = 0; i <addresses.length; i++) {
-            System.out.println((i + 1) + ". " + addresses[i]);
-        }
 
-        System.out.print("Shipping address?: ");
-        String shipping = input.nextLine();
-        addressIndex = Integer.parseInt(shipping);
+        displayChoices(addresses);
+        addressIndex = promptUserForInt("Shipping address?: ");
+
+        int orderQuantity = promptUserForInt("Order quantity? ");
 
 
-        System.out.print("Order quantity? ");
-        String quantityStr = input.nextLine();
-        int quantity = Integer.parseInt(quantityStr);
+        displayChoices(size);
+        sizeIndex = promptUserForInt("Size?: ");
 
-        for (int i = 0; i <size.length; i++) {
-            System.out.println((i + 1) + ". " + size[i]);
-        };
+        String taxExempt = promptUserForString("Are you tax-exempt? (y/n) ");
 
-        System.out.print("Size?: ");
-        String sizeStr = input.nextLine();
-        sizeIndex = Integer.parseInt(sizeStr);
+        String shipping = promptUserForString("Shipping? (standard/ overnight/ two-day)");
+
+        String promoCode = promptUserForString("Promo code for free shipping?");
 
         System.out.println("\nDetails:");
         System.out.println("Address: " + addresses[addressIndex - 1]);
