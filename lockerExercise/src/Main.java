@@ -25,7 +25,8 @@ public class Main {
 
                 case "2":
                     //access locker
-                    service.viewLockerList();
+                    Utilities.print("Which locker would you like to access?");
+                    service.showAvailableLockers();
                     String userInput = Utilities.getInput();
                     int userLocker = Integer.parseInt(userInput);
                     try {
@@ -52,7 +53,8 @@ public class Main {
 
                 case "3":
                     //Release locker
-                    service.releaseLockerList();
+                    Utilities.print("Which locker would you like to release?");
+                    service.showAvailableLockers();
                     String releaseInputStr = Utilities.getInput();
                     int releaseInput = Integer.parseInt(releaseInputStr);
                     try {

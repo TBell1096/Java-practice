@@ -2,7 +2,6 @@ public class LockerService {
 
 
     private Locker[] lockerList;
-    private Locker[] pinList;
 
 
 
@@ -29,7 +28,7 @@ public class LockerService {
 
     public int getNextLockerNumber() {
         for (int i = 0; i < lockerList.length; i++) {
-            if (lockerList[i] != null && lockerList[i].isRented() == false) {
+            if (lockerList[i] != null && !lockerList[i].isRented()) {
                 return i + 1;
             } else if (lockerList[i] == null) {
                 lockerList[i] = new Locker(i + 1);
@@ -44,21 +43,11 @@ public class LockerService {
 
     public String rentLocker(int lockerNumber) throws Exception {
         return lockerList[lockerNumber-1].rentLocker();
+
     }
 
-    public void viewLockerList() {
-        Utilities.print("Which locker would you like to access?");
-        boolean currentlyRented =false;
-        for (int i = 0; i < lockerList.length; i++) {
-            if (lockerList[i] != null && lockerList[i].isRented()) {
-                Utilities.print("Locker " + (i +1));
-                currentlyRented = true;
-            }
-        }
-    }
 
-    public void releaseLockerList() {
-        Utilities.print("Which locker would you like to release?");
+    public void showAvailableLockers() {
         boolean currentlyRented =false;
         for (int i = 0; i < lockerList.length; i++) {
             if (lockerList[i] != null && lockerList[i].isRented()) {
